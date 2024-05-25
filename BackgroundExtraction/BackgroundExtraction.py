@@ -1,27 +1,40 @@
 import cv2
-import numpy as np
+from ultralytics import YOLO
+import os
 
-# Load the video
-video_path = '../Tests/denemevideo.mp4'
-cap = cv2.VideoCapture(video_path)
 
-# Check if the video opened successfully
-if not cap.isOpened():
-    print("Error: Unable to open video.")
-    exit()
+# This function returns background and also saves it
 
-# Read the first frame
-ret, frame = cap.read()
+def extract_background(video_path):
+    video_name = os.path.basename(video_path)
 
-# Check if the frame was read successfully
-if not ret:
-    print("Error: Unable to read the frame.")
-    exit()
+    print(f"Extracting background from video {video_name} ...")
+    model = YOLO("../Models/yolov8n-seg.pt")
 
-# Save the first frame as an image
-cv2.imwrite('first_frame.jpg', frame)
+    cap = cv2.VideoCapture(video_path)
 
-# Release the video capture object
-cap.release()
+    back_ground = "background.png"
 
-# remove people from first frame background
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        # Perform detection
+        results = model.predict(frame, show=False, classes=[0])  # classes=[0] takes only people
+
+        if not results[0].boxes.data.any():
+            if not os.path.exists(back_ground):
+                back_ground_name = video_name + "_background.png"
+                cv2.imwrite(back_ground_name, frame)
+                print(f"People with no frame successfully found and saved as {back_ground_name} .")
+                break
+
+            continue
+
+    # Release everything when done
+    cap.release()
+    return back_ground
+
+# Testing function
+# extract_background("../Tests/office-1.mov")
