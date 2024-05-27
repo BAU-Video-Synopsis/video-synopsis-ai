@@ -19,7 +19,7 @@ def get_track_history_and_crop_people(video_path):
     # Store the track history
     track_history = defaultdict(lambda: [])
 
-    cropped_people_path = f"cropped_people_{video_name_without_extension}"
+    cropped_people_path = fr"C:\Users\ashas\PycharmProjects\video-synopsis-ai\Results\"cropped_people_{video_name_without_extension}"
     if os.path.exists(cropped_people_path):
         shutil.rmtree(cropped_people_path)
         os.mkdir(cropped_people_path)
@@ -63,7 +63,6 @@ def get_track_history_and_crop_people(video_path):
     # Release the video capture object and close the display window
     cap.release()
     return track_history, cropped_people_path
-
 
 # Testing function
 # try_track_history, folder_name = get_track_history_and_crop_people("../Tests/office-1.mov")

@@ -9,20 +9,21 @@ def video_synopsis(video_path):
     video_name = os.path.basename(video_path)
     video_name_without_extension = os.path.splitext(video_name)[0]
     synopsis_output_name = f"{video_name_without_extension}_output.avi"
+    synopsis_output_path = fr"C:\Users\ashas\PycharmProjects\video-synopsis-ai\Results\{synopsis_output_name}"
 
     background_path = extract_background(video_path)
     background_image = cv2.imread(background_path)
 
-    summarized_video_path = summarize_video(video_path)
+    summarized_video_path = summarize_video(video_path)  # when summarized video goes to tracker there are missing values
+    # track_history, cropped_people_folder_path = get_track_history_and_crop_people(summarized_video_path)
 
-    # track_history, cropped_people_folder_path = get_track_history_and_crop_people(summarized_video_path) summarized gidince bozuluyor
     track_history, cropped_people_folder_path = get_track_history_and_crop_people(video_path)
 
     cap = cv2.VideoCapture(summarized_video_path)
     assert cap.isOpened(), "Error reading video file"
     w, h, fps = (int(cap.get(x)) for x in (cv2.CAP_PROP_FRAME_WIDTH, cv2.CAP_PROP_FRAME_HEIGHT, cv2.CAP_PROP_FPS))
 
-    video_writer = cv2.VideoWriter(synopsis_output_name, cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
+    video_writer = cv2.VideoWriter(synopsis_output_path, cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
 
     max_locations = max(len(v) for v in track_history.values())
 
@@ -39,7 +40,7 @@ def video_synopsis(video_path):
 
     cap.release()
     video_writer.release()
-    return synopsis_output_name
+    return synopsis_output_path
 
 
 # Testing function

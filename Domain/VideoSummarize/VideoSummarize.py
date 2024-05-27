@@ -20,7 +20,9 @@ def summarize_video(video_path):
 
     # Define the codec and create VideoWriter object
     summarized_video_name = f"{video_name}_summarized.avi"
-    video_writer = cv2.VideoWriter(summarized_video_name,
+    summarized_video_path = fr"C:\Users\ashas\PycharmProjects\video-synopsis-ai\Results\{summarized_video_name}"
+
+    video_writer = cv2.VideoWriter(summarized_video_path,
                                    cv2.VideoWriter_fourcc(*'mp4v'),
                                    fps,
                                    (width, height))
@@ -43,7 +45,7 @@ def summarize_video(video_path):
     # Release everything when done
     cap.release()
     video_writer.release()
-    return summarized_video_name
+    return summarized_video_path
 
 
 # Testing function

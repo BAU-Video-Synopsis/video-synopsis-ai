@@ -14,6 +14,7 @@ def extract_background(video_path):
     cap = cv2.VideoCapture(video_path)
 
     back_ground_name = video_name + "_background.png"
+    back_ground_path = fr"C:\Users\ashas\PycharmProjects\video-synopsis-ai\Results\{back_ground_name}"
 
     while cap.isOpened():
         ret, frame = cap.read()
@@ -25,8 +26,8 @@ def extract_background(video_path):
 
         if not results[0].boxes.data.any():
             if not os.path.exists(back_ground_name):
-                cv2.imwrite(back_ground_name, frame)
-                print(f"People with no frame successfully found and saved as {back_ground_name} .")
+                cv2.imwrite(back_ground_path, frame)
+                print(f"Frame with no people in it successfully found and saved as {back_ground_name} .")
                 break
             else:
                 break
@@ -35,7 +36,7 @@ def extract_background(video_path):
 
     # Release everything when done
     cap.release()
-    return back_ground_name
+    return back_ground_path
 
 # Testing function
 # extract_background("../Tests/office-4v2.mp4")
