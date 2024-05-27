@@ -9,7 +9,7 @@ def extract_background(video_path):
     video_name = os.path.basename(video_path)
 
     print(f"Extracting background from video {video_name} ...")
-    model = YOLO("../Models/yolov8n-seg.pt")
+    model = YOLO("../../Models/yolov8n-seg.pt")
 
     cap = cv2.VideoCapture(video_path)
 

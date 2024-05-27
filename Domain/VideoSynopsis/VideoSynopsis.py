@@ -1,8 +1,8 @@
 import os
 import cv2
-from BackgroundExtraction.BackgroundExtraction import extract_background
-from VideoSummarize.VideoSummarize import summarize_video
-from ObjectTracking.ObjectTrackingv2 import get_track_history_and_crop_people
+from Domain.BackgroundExtraction.BackgroundExtraction import extract_background
+from Domain.VideoSummarize.VideoSummarize import summarize_video
+from Domain.ObjectTracking.ObjectTrackingv2 import get_track_history_and_crop_people
 
 
 def video_synopsis(video_path):

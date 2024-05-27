@@ -12,7 +12,7 @@ def get_track_history_and_crop_people(video_path):
     video_name_without_extension = os.path.splitext(video_name)[0]
 
     print(f"Tracking and cropping for {video_name}")
-    model = YOLO("../Models/yolov8n-seg.pt")
+    model = YOLO("../../Models/yolov8n-seg.pt")
 
     cap = cv2.VideoCapture(video_path)
 
