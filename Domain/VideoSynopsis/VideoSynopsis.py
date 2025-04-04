@@ -40,7 +40,7 @@ def video_synopsis(video_path):
 
     cap.release()
     video_writer.release()
-    return synopsis_output_path
+    return synopsis_output_path, synopsis_output_name
 
 
 # Testing function

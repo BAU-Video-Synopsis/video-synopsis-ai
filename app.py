@@ -10,8 +10,8 @@ def video_path():
     data = request.get_json()
     filePath = data.get("filePath")
     path = fr"{filePath}"
-    synopsis_output_path = video_synopsis(path)
-    return jsonify({'synopsis_output_path': synopsis_output_path, 'message': 'Data received'}), 200
+    synopsis_output_path, synopsis_output_name = video_synopsis(path)
+    return jsonify({'synopsis_output_path': synopsis_output_path, 'message': 'Data received', 'filename': synopsis_output_name}), 200
 
 
 if __name__ == '__main__':
