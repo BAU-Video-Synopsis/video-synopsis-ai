@@ -51,6 +51,6 @@ The system identifies and tracks moving objects (primarily humans), and merges k
 
 - Hasan Kemal Mete *(Computer Vision & AI)*
 - Bengühan Şahin *(Computer Vision & AI)*
-- Ekrem Bulut *(Software Engineering)*
-- Doğa Yıldız *(Frontend & Backend Development)*
+- Ekrem Bulut *(Frontend & Backend Development)*
+- Doğa Yıldız *(Software Engineering)*
 - Sarper Sarp *(Software Architecture & Integration)*
