@@ -54,9 +54,3 @@ The system identifies and tracks moving objects (primarily humans), and merges k
 - Ekrem Bulut *(Software Engineering)*
 - Doğa Yıldız *(Frontend & Backend Development)*
 - Sarper Sarp *(Software Architecture & Integration)*
-
----
-
-Feel free to modify or expand sections like **Installation**, **Usage**, or **License** depending on how you package your repo.
-
-Want help writing those too?
