@@ -45,7 +45,6 @@ The system identifies and tracks moving objects (primarily humans), and merges k
 | Backend    | Node.js, Express                    |
 | Database   | MongoDB                             |
 | AI Module  | YOLOv8, PyTorch, OpenCV, FFmpeg     |
-| Deployment | GitHub, Docker (optional)           |
 
 ## 🧑‍💻 Contributors
 
